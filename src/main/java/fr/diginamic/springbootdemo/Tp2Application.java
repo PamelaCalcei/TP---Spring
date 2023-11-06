@@ -37,7 +37,5 @@ public class Tp2Application implements CommandLineRunner {
 	    animal1.setSpecies(speciesRepository.findById(1).orElseThrow());
 	    animalRepository.save(animal1);
 	    personRepository.delete(personRepository.findById(2).orElseThrow());
-
 	}
-
 }
