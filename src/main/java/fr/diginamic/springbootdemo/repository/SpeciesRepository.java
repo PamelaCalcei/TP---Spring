@@ -12,4 +12,5 @@ import fr.diginamic.springbootdemo.model.Species;
 public interface SpeciesRepository extends CrudRepository<Species, Integer>{
 	Species findFirstByCommonName(String commonName);
 	List<Species>findByLatinNameContainsIgnoreCase(String latinName);
+	
 }

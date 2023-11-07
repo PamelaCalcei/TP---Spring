@@ -1,5 +1,8 @@
 package fr.diginamic.springbootdemo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -39,6 +42,13 @@ public class Tp2Application implements CommandLineRunner {
 //	    personRepository.delete(personRepository.findById(3).orElseThrow());
 	    System.out.println("Espèce de chats : " + speciesRepository.findFirstByCommonName("Chat"));
 	    System.out.println("Espèce contenant Oryctolagus : " + speciesRepository.findByLatinNameContainsIgnoreCase("oryctolagus"));
+	    System.out.println("Chercher par prénom ou nom : " + personRepository.findByLastnameOrFirstname("Mangolo", "Henri"));
+	    System.out.println("Chercher personnes avec un age supérieur ou égal : " + personRepository.findByAgeGreaterThanEqual(40));
+	    System.out.println("Renvoie tous les animaux de la Species Fournie : " + animalRepository.findBySpecies(speciesRepository.findById(1).orElseThrow()));
+	    List<String> colors = new ArrayList<>();
+	    colors.add("Roux");
+	    colors.add("Gris tacheté");
+	    System.out.println("Renvoie une liste de couleur : " + animalRepository.findByColorIn(colors));
 	    
 	}
 }
