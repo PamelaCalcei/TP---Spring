@@ -36,6 +36,9 @@ public class Tp2Application implements CommandLineRunner {
 	    animal1.setSex("F");
 	    animal1.setSpecies(speciesRepository.findById(1).orElseThrow());
 	    animalRepository.save(animal1);
-	    personRepository.delete(personRepository.findById(2).orElseThrow());
+//	    personRepository.delete(personRepository.findById(3).orElseThrow());
+	    System.out.println("Espèce de chats : " + speciesRepository.findFirstByCommonName("Chat"));
+	    System.out.println("Espèce contenant Oryctolagus : " + speciesRepository.findByLatinNameContainsIgnoreCase("oryctolagus"));
+	    
 	}
 }
