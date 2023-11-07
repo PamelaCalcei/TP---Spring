@@ -3,7 +3,10 @@ package fr.diginamic.springbootdemo.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.diginamic.springbootdemo.enums.Sex;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
@@ -15,7 +18,8 @@ public class Animal {
 	private int id;
 	private String color;
 	private String name;
-	private String sex;
+	@Enumerated(EnumType.STRING)
+	private Sex sex;
 	@ManyToOne
 	@JoinColumn(name = "species_id")
 	private Species species;
@@ -46,11 +50,13 @@ public class Animal {
 		this.name = name;
 	}
 
-	public String getSex() {
+	
+
+	public Sex getSex() {
 		return sex;
 	}
 
-	public void setSex(String sex) {
+	public void setSex(Sex sex) {
 		this.sex = sex;
 	}
 
