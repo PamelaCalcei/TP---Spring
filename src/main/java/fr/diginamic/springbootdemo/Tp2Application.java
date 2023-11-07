@@ -49,6 +49,8 @@ public class Tp2Application implements CommandLineRunner {
 	    colors.add("Roux");
 	    colors.add("Gris tacheté");
 	    System.out.println("Renvoie une liste de couleur : " + animalRepository.findByColorIn(colors));
+	    System.out.println("Trie les species par nom commun asc : " + speciesRepository.findByNameAsc());
+	    System.out.println("Species avec un nom commun LIKE params : " + speciesRepository.findByCommonNameLike("Chat"));
 	    
 	}
 }
