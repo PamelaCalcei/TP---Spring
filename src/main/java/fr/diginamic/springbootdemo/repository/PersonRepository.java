@@ -10,7 +10,7 @@ import fr.diginamic.springbootdemo.model.Animal;
 import fr.diginamic.springbootdemo.model.Person;
 
 @Repository
-public interface PersonRepository extends CrudRepository<Person, Integer>{
+public interface PersonRepository extends CrudRepository<Person, Integer>, PersonRepositoryCustom{
 	List<Person>findByLastnameOrFirstname(String lastname, String firstname);
 	List<Person>findByAgeGreaterThanEqual(Integer age);
 	@Query("SELECT u FROM Person u WHERE u.age BETWEEN :minAge AND :maxAge")

@@ -12,7 +12,9 @@ import fr.diginamic.springbootdemo.enums.Sex;
 import fr.diginamic.springbootdemo.model.Animal;
 import fr.diginamic.springbootdemo.repository.AnimalRepository;
 import fr.diginamic.springbootdemo.repository.PersonRepository;
+import fr.diginamic.springbootdemo.repository.PersonRepositoryCustom;
 import fr.diginamic.springbootdemo.repository.SpeciesRepository;
+import jakarta.transaction.Transactional;
 
 @SpringBootApplication
 public class Tp2Application implements CommandLineRunner {
@@ -29,7 +31,7 @@ public class Tp2Application implements CommandLineRunner {
 		SpringApplication.run(Tp2Application.class, args);
 	}
 
-	@Override
+	@Override @Transactional
 	public void run(String... args) throws Exception {
 		System.out.println(">>>>>>>>>>Liste des animaux : " + this.animalRepository.findAll());
 		System.out.println(">>>>>>>>>>Liste des personnes : " + this.personRepository.findAll());
@@ -55,8 +57,14 @@ public class Tp2Application implements CommandLineRunner {
 	    System.out.println(">>>>>>>>>> Chercher personnes dont l'âge est entre age min et age max" + personRepository.findByAgeBetween(30,90));
 	    System.out.println(">>>>>>>>>> Chercher toutes les personnes qui possèdent l'animal" + personRepository.findByPersonAnimal(animalRepository.findById(4).orElseThrow()));
 	    System.out.println(">>>>>>>>>>Renvoie le nombre d'animaux dont le Sex est égal à la valeur " + animalRepository.countBySex(Sex.F));
-	    System.out.println(">>>>>>>>>> " + animalRepository.checkIfAnimalIsNotOrphelin(animalRepository.findById(3).orElseThrow()));
-	    
+	    System.out.println(">>>>>>>>>> L'animal fourni appartient à au moins une personne" + animalRepository.checkIfAnimalIsNotOrphelin(animalRepository.findById(3).orElseThrow()));
+	    System.out.println(">>>>>>>>>> Delete custom");
+	    // personRepository.deletePerson();
+	    System.out.println(">>>>>>>>>>Generate entity");
+	    personRepository.generateEntity(4);
+
 	    
 	}
+	
+	
 }
